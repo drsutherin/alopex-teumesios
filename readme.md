@@ -10,3 +10,6 @@ Alopex Teumesios is a counter-counter-UAS (CCUAS) project under development for 
 
 ### Project Goal
 To develop a user-piloted UAS system implementing autonomous detection and avoidance capabilities to evade incoming projectile threats.
+
+### Dependencies
+* ArduCopter: [wiki](http://ardupilot.org/copter/docs/introduction.html)
