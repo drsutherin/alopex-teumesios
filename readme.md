@@ -13,3 +13,5 @@ To develop a user-piloted UAS system implementing autonomous detection and avoid
 
 ### Dependencies
 * ArduCopter: [wiki](http://ardupilot.org/copter/docs/introduction.html)
+
+*Alopex logo from [ClipartFest.com](https://clipartfest.com/download/b4f90b1738b49e5a93beff7a8e6bf46830dc337b.html)*
