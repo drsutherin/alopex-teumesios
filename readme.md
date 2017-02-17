@@ -20,7 +20,10 @@ To develop a user-piloted UAS system implementing autonomous detection and avoid
   * `git clone https://github.com/drsutherin/alopex-teumesios.git`
 * cd into the directory
   * `cd alopex-teumesios`
-* Initialize and update the ArduPilot
-'''git submodule init'''
-```
+* Initialize and update the ArduPilot submodule
+  * `git submodule init`
+  * `git submodule refresh`
+* Upload ADAM code to Arduino
+* Flash ArduPilot code to SD card
+
 *Alopex logo from [ClipartFest.com](https://clipartfest.com/download/b4f90b1738b49e5a93beff7a8e6bf46830dc337b.html)*

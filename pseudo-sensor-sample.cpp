@@ -18,6 +18,11 @@ int main()
       // Predict location @ next firing
       //  (asssuming next fire @ currentTime+6*REFRESH)
       result = dist - spd*6*REFRESH;
+
+      // Generate MAVLINK message
+      msg = ...
+      
+      // Update which sensor to fire
       sensor++;
     }
   }
