@@ -1,3 +1,4 @@
+![Alopex logo](AlopexLogo.png "Alopex Logo")
 # ALOPEX TEUMESIOS
 
 Alopex Teumesios is a counter-counter-UAS (CCUAS) project under development for the Wright State University course CEG 4980/81: Team Projects I/II
