@@ -1,29 +1,35 @@
-// How long it takes to perform an iteration of the loop (seconds)
-#DEFINE REFRESH .03
+// Define time to perform an iteration of the loop (seconds)
+#DEFINE ITER .05
 
 int main()
-  Time* lastFireTime = new Time[6];
-  Sensor* sensor = new Sensor[6];
-
+  int s = 0;
+  uint16_t dist, spd, raw, res;
+  unsigned long t;
+  unsigned long* lastFire = new unsigned long[6];
+  
   while (true)  {
-    // Fire 6 sensors in sequence
-    sensor = sensor % 6;
-    // Make sure at least 1/10 sec has passed (max firing rate for sensors)
-    if ((currentTime - lastFireTime[sensor]) > .1) {
-      lastFireTime[sensor] = currentTime;
+    // Make sure at least 1/10 sec has passed (max firing rate)
+    t = millis();
+    if ((t - lastFire[s]) > 100) {
+      lastFire[s] = currentTime;
       // Fire ultrasonic
-      dist = getUltrasonic[sensor];
+      dist = getUltrasonic(s);
       // Fire microwave
-      spd = getMicrowave[sensor];
+      raw = getMicrowave(s);
+      // Translate analog microwave input into speed
+      spd = rawToSpeed(raw);
+            
       // Predict location @ next firing
-      //  (asssuming next fire @ currentTime+6*REFRESH)
-      result = dist - spd*6*REFRESH;
-
-      // Generate MAVLINK message
-      msg = ...
+      res = dist - spd*6*ITER;
+      if (res <= 0) {
+        res = .5;
+      }
       
-      // Update which sensor to fire
-      sensor++;
+      // Generate MAVLINK message
+      msg = makeMAV(t,res,s);
     }
+    // Update which sensor to fire
+    s++;
+    s = s % 6;
   }
 }
