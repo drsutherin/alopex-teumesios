@@ -20,10 +20,13 @@ To develop a user-piloted UAS system implementing autonomous detection and avoid
   * `git clone https://github.com/drsutherin/alopex-teumesios.git`
 * cd into the directory
   * `cd alopex-teumesios`
-* Initialize and update the ArduPilot submodule
+* Initialize and update submodules
   * `git submodule init`
   * `git submodule refresh`
 * Upload ADAM code to Arduino
 * Flash ArduPilot code to SD card
+* Rock 'n roll!
 
-*Alopex logo from [ClipartFest.com](https://clipartfest.com/download/b4f90b1738b49e5a93beff7a8e6bf46830dc337b.html)*
+### Acknowledgements
+* ADAM microwave code based on projects by [3zuli](https://github.com/3zuli/HB100_test) and [kd8bxp](https://www.gitbook.com/book/kd8bxp/arduino-project-doppler-radar-speed-detection-usi/details)
+* Alopex logo from [ClipartFest.com](https://clipartfest.com/download/b4f90b1738b49e5a93beff7a8e6bf46830dc337b.html)

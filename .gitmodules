@@ -1,3 +1,6 @@
 [submodule "ardupilot"]
 	path = ardupilot
 	url = https://github.com/ardupilot/ardupilot
+[submodule "adam/HB100_test"]
+	path = adam/HB100_test
+	url = https://github.com/3zuli/HB100_test

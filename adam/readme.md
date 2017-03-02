@@ -6,6 +6,7 @@
     * Think about skipping FreqMeasure translation into kph
       * Instead, jump straight from raw input to "distance" in centimeters
     * Apparently FreqPeriod is faster than FreqMeasure
+    * **(Input frequency) * 1.42523 = speed in cm/s**
   * **MaxSonar**: 2 byte distance (cm)
   * result = dist - (spd * 6 * INTERVAL)
     * INTERVAL is the time it takes to fire a given sensor set (i.e. microwave and ultrasonic facing the same direction)
@@ -21,5 +22,7 @@
 * [MAVLink how-to](http://discuss.ardupilot.org/t/mavlink-step-by-step/9629)
 * [MAVLink on GitHub](https://github.com/mavlink/mavlink)
 * [HB100 GitHub Example Project](https://github.com/3zuli/HB100_test)
+* [Another HB100 project](https://www.gitbook.com/book/kd8bxp/arduino-project-doppler-radar-speed-detection-usi/details)
 * [HB100 Preamp](https://hackaday.io/project/371-hb100-radar-shield)
-*
+* [MaxBotix Sensors w/ Arduino](http://www.maxbotix.com/Arduino-Ultrasonic-Sensors-085/#aa4)
+* [FreqPeriod found here](http://interface.khm.de/index.php/lab/interfaces-advanced/frequency-measurement-library/)
