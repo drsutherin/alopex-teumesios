@@ -21,8 +21,7 @@ To develop a user-piloted UAS system implementing autonomous detection and avoid
 * cd into the directory
   * `cd alopex-teumesios`
 * Initialize and update submodules
-  * `git submodule init`
-  * `git submodule refresh`
+  * `git submodule update --init ardupilot/ adam/HB100_test`
 * Upload ADAM code to Arduino
 * Flash ArduPilot code to SD card
 * Rock 'n roll!
