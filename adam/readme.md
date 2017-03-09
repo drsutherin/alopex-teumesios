@@ -6,7 +6,7 @@
 * Translate input
   * **HB100**: Translate raw input into frequency w/ FreqPeriod library, then translate into centimeters per second
     * **(Input frequency) * 1.42523 = speed in cm/s**
-  * **[MaxSonar]**((http://www.maxbotix.com/documents/I2CXL-MaxSonar-EZ_Datasheet.pdf)): 2 byte distance (cm)
+  * [**MaxSonar**](http://www.maxbotix.com/documents/I2CXL-MaxSonar-EZ_Datasheet.pdf): 2 byte distance (cm)
   * `result = dist - (spd * 6 * INTERVAL)`
     * INTERVAL is the time it takes to fire a given sensor set (i.e. microwave and ultrasonic facing the same direction)
     * Could use 100ms instead of 6*INTERVAL b/c that's max refresh rate for ultrasonic sensors (required for acoustic dissipation)
