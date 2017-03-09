@@ -22,8 +22,8 @@ To develop a user-piloted UAS system implementing autonomous detection and avoid
   * `cd alopex-teumesios`
 * Initialize and update submodules
   * `git submodule update --init ardupilot/ adam/HB100_test`
-* Upload ADAM code to Arduino
-* Flash ArduPilot code to SD card
+* Open ADAM code in [Arduino IDE](https://www.arduino.cc/en/Main/Software) and upload
+* Flash ArduPilot code to SD card and insert into Pixhawk
 * Rock 'n roll!
 
 ### Acknowledgements
