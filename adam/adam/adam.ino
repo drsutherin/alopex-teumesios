@@ -1,14 +1,13 @@
 #include <FreqPeriod.h>
 
 // General params
-int i = 0;                        // Counter to determine which sensor set to fire
+int sensors[] = {1,2,3,5,6,7};    // Values correspond to MAVLink regions that ArduPilot expects
+int i = 0, j = 2;                 // Counters to determine which sensor set to fire
 #define MIN_INTERVAL 100          // Minimum interval for firing an individual sensor (ms)
-unsigned long last;               // Used to determine whether last firing was long enough ago
-unsigned long lastFire[6];        // Used to store last firing time
 int result;                       // Value to send to ArduPilot
 
 // Ultrasonic/distance params
-int uSensors[] = {0,1,2,3,4,5};   // Values correspond to ultrasonic sensor pin numbers
+int uSensors[] = {112,113,114,115,116,117};   // Values correspond to ultrasonic sensor I2C numbers
 int dist;                         // Detected distance in cm
 
 // Microwave/speed params
@@ -30,11 +29,7 @@ void setup() {
  * detected objects based on distance and speed, generates MAVLink messages, and transmits 
  * messages to ArduPilot
  */
-void loop() {
-  // Check whether enough time has passed
-  if (millis() - lastFire[i] > MIN_INTERVAL)  {
-    lastFire[i] = millis();
-    
+void loop() {   
     // GET DISTANCE READING FROM ULTRASONIC SENSOR
     dist = analogRead(uSensors[i]); // assuming this will need expanded on  
 
@@ -69,5 +64,4 @@ void loop() {
     }
   // Increment sensor counter
   i = (i + 1) % 6;
-  }
 }
