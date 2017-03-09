@@ -25,7 +25,7 @@ void loop() {
   // step 3: request reading from sensor
   Wire.requestFrom(112, 2);    // request 2 bytes from slave device #112
 
-  // step 5: receive reading from sensor
+  // step 4: receive reading from sensor
   if (2 <= Wire.available()) { // if two bytes were received
     reading = Wire.read();  // receive high byte (overwrites previous reading)
     reading = reading << 8;    // shift high byte to be high 8 bits
