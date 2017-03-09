@@ -6,7 +6,7 @@
 int sensors[] = {1,2,3,5,6,7};                  // Values correspond to MAVLink regions that ArduPilot expects
 int i = 0, j = 2;                               // Counters to determine which sensor set to fire
 #define MIN_INTERVAL 100                        // Minimum interval for firing an individual sensor (ms)
-int result;                                     // Value to send to ArduPilot
+uint16_t result;                                // Value to send to ArduPilot
 
 // Ultrasonic/distance params
 int uSensors[] = {112,113,114,115,116,117};     // Values correspond to ultrasonic sensor I2C numbers
