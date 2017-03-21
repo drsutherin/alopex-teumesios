@@ -16,6 +16,8 @@ int reading = 0;
 void loop() {
   // step 1: instruct sensor to read
   Wire.beginTransmission(112);  // Transmit to device #224 (default for MaxBotix I2CXL)
+  // the address specified in the datasheet is 224 (0xE0)
+  // but i2c adressing uses the high 7 bits so it's 112
   Wire.write(byte(0x51));       // Write range command byte
   Wire.endTransmission();       // stop transmitting
 
@@ -35,5 +37,8 @@ void loop() {
     Serial.print("\tRange: ");
     Serial.print(reading);   // print the reading
     Serial.println(" cm");
+  }
+  else {
+    Serial.println("Sensor read error");
   }
 }
