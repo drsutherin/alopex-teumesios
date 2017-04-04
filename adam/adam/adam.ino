@@ -29,7 +29,6 @@ uint8_t p_compID = 255;                            // ID of the sending componen
 uint8_t p_msgID = 132;                             // Message type identifier.  132 is DISTANCE_SENSOR
 uint16_t p_check = 0;                              // Checksum calculated for each message (ITU X.25/SAE AS-4 hash, excluding p_start)
 
-
 // DISTANCE_SENSOR
 uint16_t min_dist = 20;                            // Minimum sensor distance in cm
 uint16_t max_dist = 700;                           // Maximum sensor distance in cm
