@@ -24,7 +24,7 @@
  */
 
 #include "FreqMeasure.h"
-#include "util/FreqMeasureCapture.h"
+#include "FreqMeasureCapture.h"
 
 #define FREQMEASURE_BUFFER_LEN 12
 static volatile uint32_t buffer_value[FREQMEASURE_BUFFER_LEN];
@@ -50,7 +50,7 @@ uint8_t FreqMeasureClass::available(void)
 
 	head = buffer_head;
 	tail = buffer_tail;
-	if (head >= tail) return head - tail;
+	if (head > tail) return head - tail;
 	return FREQMEASURE_BUFFER_LEN + head - tail;
 }
 
@@ -147,9 +147,7 @@ void FTM_ISR_NAME (void)
 		if (i >= FREQMEASURE_BUFFER_LEN) i = 0;
 		if (i != buffer_tail) {
 			buffer_value[i] = period;
-			buffer_head = i;
-		}
-	}
+			buffer_head = i;	}
 }
 
 
