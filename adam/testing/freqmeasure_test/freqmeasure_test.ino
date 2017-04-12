@@ -7,6 +7,7 @@ long int pp1, pp2;                                 // Not entirely sure, I think
 int spd1, spd2;     // Detected speed in cm/s
 double sum = 0;
 int count = 0;
+// Use digital pin 8 on Arduino Uno for sensor/preamp output
 
 void setup() {
   // put your setup code here, to run once:

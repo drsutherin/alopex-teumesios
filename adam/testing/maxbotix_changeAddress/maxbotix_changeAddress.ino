@@ -36,8 +36,8 @@ void setup() {
 void loop() {
 
         if (!done) {
-          byte old = 117; // old address goes here (default it 112)
-          changeAddress(old,0xe8,false);  // note: 2nd param will be shifted 1 bit left
+          byte old = 112; // old address goes here (default it 112)
+          changeAddress(old,0xe0,false);  // note: 2nd param will be shifted 1 bit left
           done = true;
         }
         else {
