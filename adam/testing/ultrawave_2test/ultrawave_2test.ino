@@ -22,9 +22,9 @@ double sum1 = 0;
 double sum2 = 0;
 
 // Ultrasonic/distance params
-#define BASE 112
+#define SENSOR_1_ADDR 112
+#define SENSOR_2_ADDR 115
 int i = 0;
-int j;
 int reading1 = 0;
 int reading2 = 0;
 
@@ -39,11 +39,16 @@ void loop() {
   i = 0;
   Serial.println("DEBUG: Start");
   // Start ultrasonic sensor reading
-  Wire.beginTransmission(SENSOR_ADDR);
+  Wire.beginTransmission(SENSOR_1_ADDR);
   Wire.write(byte(0x51));
   byte error = Wire.endTransmission();  
-  Serial.println("DEBUG: Ultrasonic start");
+  Serial.println("DEBUG: Ultrasonic 1 start");
 
+  Wire.beginTransmission(SENSOR_2_ADDR);
+  Wire.write(byte(0x51));
+  byte error = Wire.endTransmission();  
+  Serial.println("DEBUG: Ultrasonic 2 start");
+  
   // Get NUM_READS readings from microwave sensors
   while (i < NUM_READS) {
     //Serial.print("DEBUG: i = "); Serial.println(i);
