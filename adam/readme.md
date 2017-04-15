@@ -15,7 +15,7 @@
   * Use both readings to predict object's location the next time the sensor is fired
     * `result = dist - (spd * 3 * INTERVAL)`
     * INTERVAL is the time it takes to fire a given sensor set (i.e. microwave and ultrasonic facing the same direction)
-    * 6 sensors sets are used, but spd*INTERVAL*3 is used because opposing sensor sets are fired simultaneously
+    * 6 sensors sets are used, but `spd*INTERVAL*3` is used because opposing sensor sets are fired simultaneously
     * Speed value is only magnitude, not direction, so result is assumed worst-case given object is traveling directly at the sensor (i.e. the UAS)
 
 ##### Generates & transmits MAVLink messages
