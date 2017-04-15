@@ -32,3 +32,4 @@
 * [Another HB100 project](https://www.gitbook.com/book/kd8bxp/arduino-project-doppler-radar-speed-detection-usi/details)
 * [HB100 Preamp](https://hackaday.io/project/371-hb100-radar-shield)
 * [Arduino I2C ultrasonic rangefinder tutorial](https://www.arduino.cc/en/Tutorial/SFRRangerReader)
+* [HB100 preamp diagram w/ Arduino](http://www.theorycircuit.com/wp-content/uploads/2016/09/hb100-doppler-sensor-arduino-sketch.png)
