@@ -4,24 +4,23 @@
  * to predict its future location (i.e. /at the next reading)
  * 
  * Since the HB100 sensors aren't addressed, their power pins are 
- * connected to the Arduino's digital ports, and HIGH is written to
- * the pins when they're to be read from.  The sensors' data output
- * pins are connected via a bus into Arduino pin 8
+ * connected to the Arduino's digital ports (0-3), and HIGH is
+ * written to the pins when they're to be read from.  The sensors'
+ * data output pins are connected via a bus into Arduino pin 8
  * 
  * @author  David Sutherin (sutherin.3@wright.edu)
- * @date    4/15/2017
+ * @date    4/18/2017
  */
 
 #include <Wire.h>
 #include "FreqMeasure.h"
 
 // General params
-int i;
+int i, count;
 double prediction;
 
 //Microwave/speed params
-int m1_pin = 0;
-int m2_pin = 1;
+int m1_pin, m2_pin;
 #define NUM_READS 5
 float spd1;
 float spd2;
@@ -29,8 +28,9 @@ double sum1 = 0;
 double sum2 = 0;
 
 // Ultrasonic/distance params
-#define SENSOR_1_ADDR 112
-#define SENSOR_2_ADDR 113
+#define BASE 112
+int u1_addr, u2_addr;
+bool dir = false;
 int reading1 = 0;
 int reading2 = 0;
 
@@ -40,18 +40,24 @@ void setup() {
   FreqMeasure.begin();
   pinMode(m1_pin,OUTPUT);
   pinMode(m2_pin,OUTPUT);
+  count = 0;
   Serial.println("Alopex Teumesios ADAM Test");
 }
 
 void loop() {
   i = 0;
+  u1_addr = (BASE + count);
+  u2_addr = u1_addr + ((count + 2) % 4);
+  m1_pin = count;
+  m2_pin = (count + 2) % 4;
+  
   Serial.println("DEBUG: Start");
   // Start ultrasonic sensor reading
-  Wire.beginTransmission(SENSOR_1_ADDR);
+  Wire.beginTransmission(u1_addr);
   Wire.write(byte(0x51));
   byte error1 = Wire.endTransmission();  
 
-  Wire.beginTransmission(SENSOR_2_ADDR);
+  Wire.beginTransmission(u2_addr);
   Wire.write(byte(0x51));
   byte error2 = Wire.endTransmission();
   
@@ -64,7 +70,7 @@ void loop() {
       digitalWrite(m1_pin,LOW);
       
       // Read from microwave sensor #2
-      digitalWrite(m2_pin,HIGH);
+      digitalWrite((m2_pin),HIGH);
       sum2 = sum2 + FreqMeasure.read();
       digitalWrite(m2_pin,LOW);
       delay(50);\
@@ -91,7 +97,7 @@ void loop() {
   sum2 = 0;
   
   // Request reading from ultrasonic sensor #1
-  Wire.requestFrom(SENSOR_1_ADDR, 2);
+  Wire.requestFrom(u1_addr, 2);
 
   // Receive reading from sensor
   if (2 <= Wire.available()) {
@@ -104,7 +110,7 @@ void loop() {
   }
 
   // Request reading from ultrasonic sensor #2
-  Wire.requestFrom(SENSOR_2_ADDR, 2);
+  Wire.requestFrom(u2_addr, 2);
 
   // Receive reading from sensor
   if (2 <= Wire.available()) {
@@ -129,4 +135,6 @@ void loop() {
   Serial.print(prediction);
   Serial.println("cm");
   Serial.println();
+
+  count = (count + 1) % 4;
 }
